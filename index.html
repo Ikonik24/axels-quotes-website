@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axel's Quotes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e293b, #64748b);
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #64748b;
+            border-radius: 10px;
+            background: #1e293b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            animation: fadeDown 1.2s ease;
+        }
+
+        #quote-box {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #quote-text {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            min-height: 60px;
+            opacity: 0;
+            animation: fadeInText 0.6s ease forwards;
+        }
+
+        #quote-button {
+            padding: 12px 25px;
+            font-size: 1em;
+            border: none;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        #quote-button:hover {
+            background: #2563eb;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Axel's Legendary Quotes</h1>
+        <div id="quote-box">
+            <p id="quote-text">Click the button to see a quote!</p>
+            <button id="quote-button">Show Me a Quote</button>
+        </div>
+    </div>
+    <script>
+        const quotes = [
+            "Donating is an art, and I’m the Picasso of generosity.",
+            "You don’t have to be rich to donate... but it sure helps!",
+            "Every donation tells a story. What’s yours gonna say?",
+            "I don’t just raise Robux; I raise expectations.",
+            "Don’t be shy—drop a Robux or two. It’s for a good cause… me!",
+            "The booth is open, the vibe is chill. Let’s make some donation magic happen.",
+            "Generosity looks good on you. Why not try it out?",
+            "Big or small, every donation makes a difference... mostly to me.",
+            "Got Robux? I’ve got dreams. Let’s make it happen.",
+            "I’m not saying I’m the best booth here, but… actually, yeah, I am."
+               // Add your new quotes here
+
+        ];
+
+        const quoteText = document.getElementById("quote-text");
+        const quoteButton = document.getElementById("quote-button");
+
+        quoteButton.addEventListener("click", () => {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteText.textContent = quotes[randomIndex];
+            quoteText.style.opacity = "0"; // Trigger fade-out
+            setTimeout(() => {
+                quoteText.style.animation = "fadeInText 0.6s ease forwards";
+            }, 100); // Fade back in
+        });
+    </script>
+</body>
+</html>
